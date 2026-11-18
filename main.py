@@ -71,6 +71,7 @@ def choose_move(fen, legal, is_white):
     board = parse_board(fen)
     sorted_m = sort_moves(board, legal)
     if not sorted_m: return legal[0]
+    # 1-ply alpha-beta optimization with MVV-LVA move ordering
     best_move, best_score = sorted_m[0], -999999
     for m in sorted_m:
         nb = simulate_move(board, m)
